@@ -1,0 +1,27 @@
+{
+  "name": "board-game-assistant",
+  "version": "1.0.0",
+  "description": "A Small Project for a basic board games scoring app using React and Node.js.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js",
+    "build": "npm --prefix frontend install && npm prefix frontend run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffsugden/board-game-assistant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/geoffsugden/board-game-assistant/issues"
+  },
+  "homepage": "https://github.com/geoffsugden/board-game-assistant#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
