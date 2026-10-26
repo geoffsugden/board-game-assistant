@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react'
-import { Container, Typography, Grid, Box, Select, MenuItem } from '@mui/material'
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Select,
+  MenuItem,
+  Stack,
+  InputLabel,
+} from '@mui/material'
 import Scorecard from './components/Scorecard'
 
 const App = () => {
   const [playedGames, setPlayedGames] = useState([])
   const [gamesFilter, setGamesFilter] = useState('All')
-  // const [playerFilter, setPlayerFilter] = useState('All')
+  const [playerFilter, setPlayerFilter] = useState('All')
 
   useEffect(() => {
     const setScoresData = async () => {
@@ -17,26 +26,58 @@ const App = () => {
   }, [])
 
   const games = ['All', ...new Set(playedGames.map((playedGame) => playedGame.game))]
-  const players = ['All', ...new Set(playedGames.flatMap((playedGame) => playedGame.scores.player))]
+  const players = [
+    'All',
+    ...new Set(
+      playedGames.flatMap((playedGame) => playedGame.scores).map((scorecard) => scorecard.player),
+    ),
+  ]
 
-  console.log(players)
+  const gamesToShow = playedGames.filter((game) => {
+    const showGame = gamesFilter === 'All' || gamesFilter === game.game
+    const showPlayer =
+      playerFilter === 'All' || game.scores.some((game) => playerFilter === game.player)
 
-  const gamesToShow =
-    gamesFilter === 'All' ? playedGames : playedGames.filter((game) => game.game === gamesFilter)
+    return showGame && showPlayer
+  })
 
   return (
     <Container>
-      <Typography variant='h1'>Board Game Assistant</Typography>
-      <Typography variant='body1'>
-        Your friendly board game scoring assitant. More features to be added in time.
-      </Typography>
-      <Box>
-        <Select value={gamesFilter} onChange={({ target }) => setGamesFilter(target.value)}>
-          {games.map((game) => (
-            <MenuItem value={game}>{game}</MenuItem>
-          ))}
-        </Select>
-      </Box>
+      <Stack
+        direction='row'
+        spacing={2}
+        sx={{ alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+        <Box>
+          <Typography variant='h1'>Board Game Assistant</Typography>
+          <Typography variant='body1'>
+            Your friendly board game scoring assitant. More features to be added in time.
+          </Typography>
+        </Box>
+        <Stack direction='row' spacing={2}>
+          <Box>
+            <InputLabel htmlFor='gamesFilter'>Game</InputLabel>
+            <Select
+              labelId='gamesFilter'
+              value={gamesFilter}
+              onChange={({ target }) => setGamesFilter(target.value)}>
+              {games.map((game) => (
+                <MenuItem value={game}>{game}</MenuItem>
+              ))}
+            </Select>
+          </Box>
+          <Box>
+            <InputLabel htmlFor='playerFilter'>Player</InputLabel>
+            <Select
+              labelId='playerFilter'
+              value={playerFilter}
+              onChange={({ target }) => setPlayerFilter(target.value)}>
+              {players.map((player) => (
+                <MenuItem value={player}>{player}</MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </Stack>
+      </Stack>
       <Grid container spacing={2}>
         {gamesToShow
           .toSorted((a, b) => new Date(b.date) - new Date(a.date))
