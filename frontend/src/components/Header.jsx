@@ -16,6 +16,7 @@ const Header = ({ setGamesFilter, setPlayerFilter, gamesFilter, playerFilter, ga
           <InputLabel htmlFor='gamesFilter'>Game</InputLabel>
           <Select
             labelId='gamesFilter'
+            sx={{ minWidth: '8rem' }}
             value={gamesFilter}
             onChange={({ target }) => setGamesFilter(target.value)}>
             {games.map((game) => (
@@ -27,6 +28,7 @@ const Header = ({ setGamesFilter, setPlayerFilter, gamesFilter, playerFilter, ga
           <InputLabel htmlFor='playerFilter'>Player</InputLabel>
           <Select
             labelId='playerFilter'
+            sx={{ minWidth: '8rem' }}
             value={playerFilter}
             onChange={({ target }) => setPlayerFilter(target.value)}>
             {players.map((player) => (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Container, Grid } from '@mui/material'
-import GameCard from './components/GameCards'
+import { Container } from '@mui/material'
+import GameCards from './components/GameCards'
 import Header from './components/Header'
 
 const App = () => {
@@ -43,15 +43,7 @@ const App = () => {
         games={games}
         players={players}
       />
-      <Grid container spacing={2}>
-        {gamesToShow
-          .toSorted((a, b) => new Date(b.date) - new Date(a.date))
-          .map((playedGame) => (
-            <Grid key={playedGame.date} size={{ xs: 12, s: 6, md: 4 }}>
-              <GameCard key={playedGame.date} game={playedGame} />
-            </Grid>
-          ))}
-      </Grid>
+      <GameCards games={gamesToShow} />
     </Container>
   )
 }
