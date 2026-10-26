@@ -8,14 +8,14 @@ const formattedDate = (dateString) => {
   return formattedDate
 }
 
-const Scorecard = ({ scorecard }) => {
+const GameCard = ({ game }) => {
   return (
     <Paper elevation={3} sx={{ p: 2, mt: 1 }}>
-      <Typography variant='h3'>{scorecard.game} - Game results</Typography>
-      <Typography variant='subtitle2'>Played on {formattedDate(scorecard.date)}</Typography>
+      <Typography variant='h3'>{game.game} - Game results</Typography>
+      <Typography variant='subtitle2'>Played on {formattedDate(game.date)}</Typography>
 
       <Stack spacing={2} sx={{ mt: 2 }}>
-        {scorecard.scores.map((score) => (
+        {game.scores.map((score) => (
           <Card key={score.player} variant='outlined'>
             <CardContent>
               <Stack
@@ -36,4 +36,4 @@ const Scorecard = ({ scorecard }) => {
     </Paper>
   )
 }
-export default Scorecard
+export default GameCard
