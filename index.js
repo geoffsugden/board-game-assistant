@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import scorecardRouter from './src/routes/scorecard.js'
+import playedGamesRouter from './src/routes/playedGames.js'
 import connectToDatabase from './src/config/db.js'
 
 const app = express()
@@ -14,7 +14,7 @@ app.get('/ping', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-app.use('/api/scorecards', scorecardRouter)
+app.use('/api/playedGames', playedGamesRouter)
 
 const start = async () => {
   await connectToDatabase()

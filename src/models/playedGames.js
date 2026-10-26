@@ -13,7 +13,7 @@ const scoreSchema = new mongoose.Schema({
   },
 })
 
-const scorecardSchema = new mongoose.Schema({
+const playedGame = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
@@ -26,7 +26,7 @@ const scorecardSchema = new mongoose.Schema({
   scores: [scoreSchema],
 })
 
-scorecardSchema.set('toJSON', {
+playedGame.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
@@ -34,4 +34,4 @@ scorecardSchema.set('toJSON', {
   },
 })
 
-export default mongoose.model('scorecard', scorecardSchema)
+export default mongoose.model('playedGame', playedGame)
