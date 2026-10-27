@@ -17,7 +17,7 @@ const AddGameCard = ({ thePlayedGames, updatePlayedGames }) => {
       date: new Date(date),
       scores: scores.map(({ id, ...rest }) => rest),
     }
-    const response = await fetch('http://localhost:3001/api/playedGames', {
+    const response = await fetch('/api/playedGames', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(gameData),

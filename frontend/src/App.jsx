@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     const setScoresData = async () => {
-      const response = await fetch('http://localhost:3001/api/playedGames')
+      const response = await fetch('/api/playedGames')
       const scoresData = await response.json()
       setPlayedGames(scoresData)
     }
