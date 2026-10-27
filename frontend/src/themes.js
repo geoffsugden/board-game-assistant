@@ -67,15 +67,15 @@ const theme = createTheme({
       fontWeight: 700,
       letterSpacing: '-0.015em',
       lineHeight: 1.35,
-      color: '#F1F0E4',
+      color: '#E4C575',
     },
 
     h4: {
-      fontSize: '1.75rem',
+      fontSize: '1.4rem',
       fontWeight: 800,
       letterSpacing: '-0.02em',
       lineHeight: 1.3,
-      color: '#E4C575',
+      color: '#F1F0E4',
     },
 
     h5: {

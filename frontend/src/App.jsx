@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
-import { Container } from '@mui/material'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Button, Container, Stack } from '@mui/material'
 import GameCards from './components/GameCards'
 import Header from './components/Header'
+import AddGameCard from './components/AddGameCard'
+import GameDetails from './components/GameDetails'
 
 const App = () => {
   const [playedGames, setPlayedGames] = useState([])
-  const [gamesFilter, setGamesFilter] = useState('All')
-  const [playerFilter, setPlayerFilter] = useState('All')
 
   useEffect(() => {
     const setScoresData = async () => {
@@ -17,33 +18,31 @@ const App = () => {
     setScoresData()
   }, [])
 
-  const games = ['All', ...new Set(playedGames.map((playedGame) => playedGame.game))]
-  const players = [
-    'All',
-    ...new Set(
-      playedGames.flatMap((playedGame) => playedGame.scores).map((scorecard) => scorecard.player),
-    ),
-  ]
-
-  const gamesToShow = playedGames.filter((game) => {
-    const showGame = gamesFilter === 'All' || gamesFilter === game.game
-    const showPlayer =
-      playerFilter === 'All' || game.scores.some((game) => playerFilter === game.player)
-
-    return showGame && showPlayer
-  })
+  console.log('Played Games', playedGames)
 
   return (
     <Container>
-      <Header
-        setGamesFilter={setGamesFilter}
-        setPlayerFilter={setPlayerFilter}
-        gamesFilter={gamesFilter}
-        playerFilter={playerFilter}
-        games={games}
-        players={players}
-      />
-      <GameCards games={gamesToShow} />
+      <Header />
+      <Router>
+        <Stack direction='row' spacing={0.5}>
+          <Button component={Link} to='/' variant='contained'>
+            Home
+          </Button>
+          <Button component={Link} to='/addgamecard' variant='contained'>
+            Add Scores
+          </Button>
+        </Stack>
+        <Routes>
+          <Route
+            path='/addgamecard'
+            element={
+              <AddGameCard thePlayedGames={playedGames} updatePlayedGames={setPlayedGames} />
+            }
+          />
+          <Route path='/gamedetails/:id' element={<GameDetails games={playedGames} />} />
+          <Route path='/' element={<GameCards playedGames={playedGames} />} />
+        </Routes>
+      </Router>
     </Container>
   )
 }

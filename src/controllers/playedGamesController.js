@@ -1,6 +1,6 @@
 import PlayedGame from '../models/playedGames.js'
 
-export const addPlayedGame = async (playedGame) => {
+const addPlayedGame = async (playedGame) => {
   const newPlayedGame = new PlayedGame({
     date: playedGame.date ?? new Date(),
     game: playedGame.game,
@@ -9,8 +9,12 @@ export const addPlayedGame = async (playedGame) => {
   return await newPlayedGame.save()
 }
 
-export const getAll = async () => {
+const getAll = async () => {
   return await PlayedGame.find({})
+}
+
+const getOne = async (id) => {
+  return await PlayedGame.find({ id: id })
 }
 export default {
   addPlayedGame,

@@ -1,5 +1,5 @@
 import { Box, Stack, Typography, InputLabel, Select, MenuItem } from '@mui/material'
-const Header = ({ setGamesFilter, setPlayerFilter, gamesFilter, playerFilter, games, players }) => {
+const Header = () => {
   return (
     <Stack
       direction='row'
@@ -11,32 +11,6 @@ const Header = ({ setGamesFilter, setPlayerFilter, gamesFilter, playerFilter, ga
           Your friendly board game scoring assitant. More features to be added in time.
         </Typography>
       </Box>
-      <Stack direction='row' spacing={2}>
-        <Box>
-          <InputLabel htmlFor='gamesFilter'>Game</InputLabel>
-          <Select
-            labelId='gamesFilter'
-            sx={{ minWidth: '8rem' }}
-            value={gamesFilter}
-            onChange={({ target }) => setGamesFilter(target.value)}>
-            {games.map((game) => (
-              <MenuItem value={game}>{game}</MenuItem>
-            ))}
-          </Select>
-        </Box>
-        <Box>
-          <InputLabel htmlFor='playerFilter'>Player</InputLabel>
-          <Select
-            labelId='playerFilter'
-            sx={{ minWidth: '8rem' }}
-            value={playerFilter}
-            onChange={({ target }) => setPlayerFilter(target.value)}>
-            {players.map((player) => (
-              <MenuItem value={player}>{player}</MenuItem>
-            ))}
-          </Select>
-        </Box>
-      </Stack>
     </Stack>
   )
 }

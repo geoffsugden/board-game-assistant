@@ -10,6 +10,12 @@ export default defineConfig([
     files: ['**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
+      { rules: {
+        'no-unused-vars': [
+          'error', 
+          { ignoreRestSibiling: true}
+        ]
+      }}
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
     ],
