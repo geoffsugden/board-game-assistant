@@ -14,9 +14,10 @@ const getAll = async () => {
 }
 
 const getOne = async (id) => {
-  return await PlayedGame.find({ id: id })
+  return await PlayedGame.findById(id)
 }
 export default {
   addPlayedGame,
+  getOne,
   getAll,
 }

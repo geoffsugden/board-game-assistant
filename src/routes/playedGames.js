@@ -8,7 +8,7 @@ router.get('/', async (_req, res) => {
   res.json(playedGames)
 })
 
-router.get('/:id', async (_req, res) => {
+router.get('/:id', async (req, res) => {
   const playedGames = await playedGameController.getOne(req.params.id)
   res.json(playedGames)
 })

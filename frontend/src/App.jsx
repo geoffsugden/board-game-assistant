@@ -18,8 +18,6 @@ const App = () => {
     setScoresData()
   }, [])
 
-  console.log('Played Games', playedGames)
-
   return (
     <Container>
       <Header />

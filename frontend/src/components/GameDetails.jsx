@@ -1,11 +1,39 @@
 import { Box, Card, CardContent, Container, Stack, Typography } from '@mui/material'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const GameDetails = ({ games }) => {
   const { id } = useParams()
+  const [game, setGame] = useState(null)
+  const [error, setError] = useState(null)
 
-  const game = games.find((game) => game.id === id)
+  useEffect(() => {
+    const getGame = async () => {
+      try {
+        const response = await fetch(`/api/playedGames/${id}`)
 
+        if (!response.ok) {
+          throw new Error(`Failed to fetch game details: ${response.status}`)
+        }
+
+        const gameData = await response.json()
+        setGame(gameData)
+      } catch (error) {
+        setError(error.message)
+      }
+    }
+    getGame()
+  }, [id])
+
+  if (error) {
+    return <Typography color='error'>{error}</Typography>
+  }
+  if (!game) {
+    return <Typography>Loading game details...</Typography>
+  }
+
+  // const game = games.find((game) => game.id === id)
   const formattedDate = (dateString) => {
     const date = new Date(dateString)
     const formattedDate = new Intl.DateTimeFormat('en-NZ', { dateStyle: 'full' }).format(
