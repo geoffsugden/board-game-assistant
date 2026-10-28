@@ -17,7 +17,8 @@ const GameCard = ({ game }) => {
       <Typography variant='subtitle2'>Played on {formattedDate(game.date)}</Typography>
       <Stack direction='row' sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Typography variant='h4'>
-          Winner {game.scores.toSorted((a, b) => b.score - a.score).pop().player}
+          Winner{' '}
+          {game.scores.reduce((max, current) => (current.score > max.score ? current : max)).player}
         </Typography>
         <Link
           component={RouterLink}
