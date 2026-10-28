@@ -46,7 +46,7 @@ const AddGameCard = ({ thePlayedGames, updatePlayedGames }) => {
   }
 
   return (
-    <Container sx={{ maxWidth: '650px' }}>
+    <Container maxWidth={false} sx={{ maxWidth: '650px', width: '100%', mx: 'auto' }}>
       <Typography variant='h2' sx={{ py: 4, textAlign: 'center' }}>
         Add your latest scores below
       </Typography>

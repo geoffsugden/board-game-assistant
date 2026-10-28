@@ -4,7 +4,9 @@ const Header = () => {
     <Stack
       direction='row'
       spacing={2}
-      sx={{ alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+      sx={{
+        pb: 1.5,
+      }}>
       <Box>
         <Typography variant='h1'>Board Game Assistant</Typography>
         <Typography variant='body1'>

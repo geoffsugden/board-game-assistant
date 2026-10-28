@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import path from 'node:path'
+import cors from 'cors'
 import { fileURLToPath } from 'node:url'
 import playedGamesRouter from './src/routes/playedGames.js'
 import connectToDatabase from './src/config/db.js'
@@ -12,6 +13,7 @@ const distPath = path.join(__dirname, 'dist')
 const app = express()
 const PORT = process.env.PORT || 3001
 
+app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.static('dist'))
 app.use(express.json())
 

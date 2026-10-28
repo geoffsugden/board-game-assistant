@@ -15,7 +15,7 @@ const GameDetails = ({ games }) => {
   }
 
   return (
-    <Container sx={{ maxWidth: '750px' }}>
+    <Container maxWidth={false} sx={{ maxWidth: '650px', width: '100%', mx: 'auto' }}>
       <Typography variant='h2' sx={{ pt: 5 }}>
         {game.game}
       </Typography>
