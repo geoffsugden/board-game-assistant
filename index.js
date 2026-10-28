@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import express from 'express'
-import path from node.path
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import playedGamesRouter from './src/routes/playedGames.js'
 import connectToDatabase from './src/config/db.js'
