@@ -10,7 +10,7 @@ const Header = () => {
       <Box>
         <Typography variant='h1'>Board Game Assistant</Typography>
         <Typography variant='body1'>
-          Your friendly board game scoring assitant. More features to be added in time.
+          Your friendly board game scoring assistant. More features to be added in time.
         </Typography>
       </Box>
     </Stack>
