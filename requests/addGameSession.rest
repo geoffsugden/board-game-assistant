@@ -1,0 +1,18 @@
+POST http://localhost:3001/api/gameSessions HTTP/1.1
+Content-Type: application/json
+
+{
+    "gameName": "Catan",  
+    "date": "2024-06-15",
+    "playerResults": [
+        {
+            "playerName": "Geoff",
+            "playerResult": 20
+        },
+        {
+            "playerName": "Andrea",
+            "playerResult": 18
+        }
+    ]
+
+}
