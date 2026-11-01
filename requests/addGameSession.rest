@@ -3,15 +3,19 @@ Content-Type: application/json
 
 {
     "gameName": "Catan",  
-    "date": "2024-06-15",
+    "date": "2025-08-20",
     "playerResults": [
         {
-            "playerName": "Geoff",
-            "playerResult": 20
+            "playerName": "Connor",
+            "playerResult": 67
         },
         {
             "playerName": "Andrea",
-            "playerResult": 18
+            "playerResult": 56
+        },
+        {
+            "playerName": "Bridget",
+            "playerResult": 5
         }
     ]
 

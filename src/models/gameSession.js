@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const playerResultsSchema = new mongoose.Schema({
   playerName: {
@@ -10,8 +10,7 @@ const playerResultsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-
-});
+})
 
 const gameSessionSchema = new mongoose.Schema({
   gameName: {
@@ -24,14 +23,26 @@ const gameSessionSchema = new mongoose.Schema({
     required: true,
   },
   playerResults: [playerResultsSchema],
+})
 
-});  
+const transformId = (returnedObject) => {
+  if (returnedObject._id) {
+    returnedObject.id = returnedObject._id.toString()
+  }
+
+  delete returnedObject._id
+  delete returnedObject.__v
+
+  return returnedObject
+}
 
 gameSessionSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
+  transform: (_document, returnedObject) => {
+    transformId(returnedObject)
+
+    returnedObject.playerResults?.forEach((playerResult) => transformId(playerResult))
+    return returnedObject
   },
-}); 
-export default mongoose.model('GameSession', gameSessionSchema);
+})
+
+export default mongoose.model('GameSession', gameSessionSchema)
