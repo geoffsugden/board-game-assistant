@@ -4,7 +4,7 @@ import path from 'node:path'
 import cors from 'cors'
 import { fileURLToPath } from 'node:url'
 import gameSessionsRoute from './src/routes/gameSessionRoutes.js'
-import connectToDatabase from './src/dbConn/db.js'
+import connectToDatabase from './src/config/db.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,10 +21,10 @@ app.get('/ping', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-// Game sessions route - for requests related viewing or storing played games. 
+// Game sessions route - for requests related viewing or storing played games.
 app.use('/api/gameSessions', gameSessionsRoute)
 
-// 
+//
 app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'))
 })
