@@ -2,11 +2,14 @@
   "name": "board-game-assistant",
   "version": "1.0.0",
   "description": "A Small Project for a basic board games scoring app using React and Node.js.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "node --watch index.js",
-    "start": "node index.js",
+    "dev": "node --watch server.js",
+    "start": "node server.js",
     "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

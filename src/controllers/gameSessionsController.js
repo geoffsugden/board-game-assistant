@@ -1,4 +1,4 @@
-import GameSession from '../models/gameSession.js'
+import GameSession from '../models/GameSession.js'
 
 const addGameSession = async (gameSession) => {
   const newGameSession = new GameSession({

@@ -3,8 +3,8 @@ import express from 'express'
 import path from 'node:path'
 import cors from 'cors'
 import { fileURLToPath } from 'node:url'
-import gameSessionsRoute from './src/routes/gameSessionRoutes.js'
-import connectToDatabase from './src/config/db.js'
+import gameSessionsRouter from './src/routes/gameSessionsRoutes.js'
+import connectToDatabase from './src/config/database.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,8 +21,8 @@ app.get('/ping', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-// Game sessions route - for requests related viewing or storing played games.
-app.use('/api/gameSessions', gameSessionsRoute)
+// Game sessions route - for requests related to viewing or storing game sessions.
+app.use('/api/gameSessions', gameSessionsRouter)
 
 //
 app.get('/{*splat}', (req, res) => {
