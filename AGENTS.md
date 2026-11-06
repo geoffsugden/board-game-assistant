@@ -9,13 +9,20 @@ This file defines expectations for AI-assisted work in this repository.
 - Work within the user request and do not expand scope without reason
 - Prefer minimal, targeted edits over broad rewrites
 - Preserve existing architecture and naming conventions
-- Respect the repository style guide in `docs/style-guide.md`
+- Respect the backend style guide in `docs/backend/style-guide.md`
 - Do not change unrelated files
-- If a requirement is ambiguous, ask for clarification before proceeding
+- If ambiguity materially affects behavior, scope, or data safety, ask for clarification. Otherwise, make a reasonable assumption and state it.
+
+## Privacy and security
+
+- Only access files inside the project being worked on
+- Never open, read, search, parse, print, or modify `.env` files or files containing credentials, tokens, passwords, or private keys
+- Do not send local data to external services or connected apps unless the user explicitly asks
+- If a task appears to require crossing these boundaries, stop and explain what access is needed
+- Do not expose secret values in command output, logs, summaries, or commits
 
 ## Implementation expectations
 
-- Keep code readable, small, and easy to review
 - Match existing project patterns for Express, Node.js, and MongoDB usage
 - Keep route, controller, and model naming consistent
 - Do not leave debug logs, temporary files, or local artifacts behind
@@ -32,7 +39,8 @@ This file defines expectations for AI-assisted work in this repository.
 
 - Prefer the smallest validation command that checks the changed behavior
 - Re-run relevant checks after edits
-- Do not add new tooling unless the repository already depends on it or it is required for the task
+- Do not add new tooling without first confirming with user
+- Integration tests must use the dedicated test database and must not clear or modify the normal application database
 
 ## Documentation expectations
 
