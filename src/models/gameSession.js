@@ -4,7 +4,13 @@ const playerResultsSchema = new mongoose.Schema({
   playerName: {
     type: String,
     required: true,
+    trim: true,
     minlength: 1,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null,
   },
   playerResult: {
     type: Number,
@@ -16,6 +22,7 @@ const gameSessionSchema = new mongoose.Schema({
   gameName: {
     type: String,
     required: true,
+    trim: true,
     minlength: 1,
   },
   date: {
